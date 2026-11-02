@@ -1,0 +1,1 @@
+from kedro_ml_framework.business_logic.training import train_project_model

@@ -1,0 +1,6 @@
+server:
+  mlflow_tracking_uri: mlruns
+
+tracking:
+  experiment:
+    name: kedro_ml_framework

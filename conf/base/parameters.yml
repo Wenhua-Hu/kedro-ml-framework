@@ -1,0 +1,8 @@
+training:
+  feature_columns:
+    - return_1d
+    - return_5d
+    - volatility_20d
+  model_params:
+    n_estimators: 200
+    random_state: 42

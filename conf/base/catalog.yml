@@ -1,0 +1,39 @@
+raw_data:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/input.csv
+
+inference_data:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/inference.csv
+
+dataset_X:
+  type: pandas.ParquetDataset
+  filepath: data/06_models/datasets/${runtime_params:dataset_id}/X.parquet
+
+dataset_y:
+  type: pandas.ParquetDataset
+  filepath: data/06_models/datasets/${runtime_params:dataset_id}/y.parquet
+
+dataset_metadata:
+  type: json.JSONDataset
+  filepath: data/06_models/datasets/${runtime_params:dataset_id}/metadata.json
+
+dataset_feature_pipeline:
+  type: pickle.PickleDataset
+  filepath: data/06_models/datasets/${runtime_params:dataset_id}/feature_pipeline.pkl
+
+model_bundle:
+  type: pickle.PickleDataset
+  filepath: data/06_models/model_bundle/inference_bundle.pkl
+
+model_metadata:
+  type: json.JSONDataset
+  filepath: data/06_models/model_bundle/model_metadata.json
+
+predictions:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/predictions.parquet
+
+evaluation:
+  type: json.JSONDataset
+  filepath: data/08_reporting/metrics.json
