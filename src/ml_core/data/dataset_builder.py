@@ -12,13 +12,20 @@ def _new_dataset_id():
 
 
 class DatasetBuilder:
-    """Build candidate features and labels using injected project components."""
+    """Build candidate features and labels using injected project components.
+
+    Feature steps here must be stateless: ``fit`` may be a no-op, but must not
+    learn values from the dataset. Learned transformations belong in the
+    estimator pipeline so cross-validation fits them separately in each fold.
+    """
 
     def __init__(self, feature_pipeline, label_builder):
         self.feature_pipeline = feature_pipeline
         self.label_builder = label_builder
 
     def build(self, raw_data, *, dataset_id=None, source=None):
+        # This pipeline builds reusable candidate columns before train/CV splits.
+        # Its steps must not learn dataset-level state here.
         transformed = self.feature_pipeline.fit_transform(raw_data)
         y = self.label_builder.build(transformed)
         label_columns = list(y.columns) if isinstance(y, pd.DataFrame) else [y.name]

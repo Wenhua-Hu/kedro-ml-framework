@@ -7,7 +7,7 @@ def create_pipeline(**kwargs) -> Pipeline:
     return Pipeline([
         node(
             func=predict,
-            inputs=["model_bundle", "inference_data"],
+            inputs=["model_bundle", "inference_data", "params:inference.method"],
             outputs="predictions",
             name="predict",
         )

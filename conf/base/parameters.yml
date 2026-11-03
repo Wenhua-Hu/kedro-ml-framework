@@ -6,3 +6,8 @@ training:
   model_params:
     n_estimators: 200
     random_state: 42
+  calibration:
+    method: sigmoid
+
+inference:
+  method: predict

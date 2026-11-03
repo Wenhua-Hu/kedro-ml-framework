@@ -14,8 +14,9 @@ def create_pipeline(**kwargs) -> Pipeline:
                 "dataset_feature_pipeline",
                 "params:training.feature_columns",
                 "params:training.model_params",
+                "params:training.calibration.method",
             ],
-            outputs=["model_bundle", "model_metadata"],
+            outputs=["model_bundle", "model_metadata", "evaluation"],
             name="train_model",
         )
     ])

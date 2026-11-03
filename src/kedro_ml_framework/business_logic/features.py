@@ -1,7 +1,9 @@
 """Example project-specific feature transformers for ordered price data."""
 
+from sklearn.base import BaseEstimator, TransformerMixin
 
-class PriceReturnFeatures:
+
+class PriceReturnFeatures(BaseEstimator, TransformerMixin):
     def __init__(self, *, price_column, time_column, entity_column=None, periods=(1, 5, 20)):
         self.price_column = price_column
         self.time_column = time_column
@@ -25,7 +27,7 @@ class PriceReturnFeatures:
         return result
 
 
-class RollingVolatilityFeature:
+class RollingVolatilityFeature(BaseEstimator, TransformerMixin):
     def __init__(self, *, price_column, time_column, window, entity_column=None):
         self.price_column = price_column
         self.time_column = time_column
