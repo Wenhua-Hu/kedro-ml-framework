@@ -1,4 +1,4 @@
-# kedro-ml-framwork
+# kedro-ml-framework
 
 A Kedro project template that keeps workflow, reusable ML components, and project-specific logic separate.
 
